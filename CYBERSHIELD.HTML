@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberShield</title>
+<style>
+*{box-sizing:border-box;font-family:Arial;margin:0}
+body{background:#071426;color:white}
+header,footer{background:#0d2038;padding:20px;text-align:center}
+.logo,h1,h2,h3{color:#35e0e0}
+nav a{color:white;margin:10px;text-decoration:none}
+.container{max-width:800px;width:90%;margin:35px auto;padding:30px;background:#10243e;border:1px solid #176080;border-radius:15px;box-shadow:0 0 20px #00caca55}
+h1,h2,p{margin-bottom:18px}
+h1,.center{text-align:center}
+p{color:#c4d2e2;line-height:1.6}
+img{width:100%;border-radius:12px;margin:20px 0}
+.page{display:none}.active{display:block}
+input,select,textarea{width:100%;padding:13px;margin:10px 0 18px;background:#071426;color:white;border:1px solid #28718b;border-radius:7px}
+label{display:block;margin:8px 0}
+button{padding:13px 20px;background:#00caca;color:#071426;border:0;border-radius:7px;font-weight:bold;cursor:pointer}
+button:hover{background:#60ffff}
+.full{width:100%}
+.card{background:#183451;padding:18px;margin:15px 0;border-left:4px solid #00caca;border-radius:8px}
+.welcome{color:#55edaa;font-size:25px;text-align:center}
+.captcha{font-size:32px;letter-spacing:10px;color:#35e0e0;text-align:center;padding:20px;background:#071426;margin:20px}
+.small{font-size:12px}
+@media(max-width:600px){.container{padding:20px}header{padding:15px}}
+</style>
+</head>
+<body>
+<header><div class="logo">🛡 CyberShield</div><nav><a href="#" onclick="show('home')">Home</a><a href="#" onclick="show('awareness')">Awareness</a></nav></header>
+
+<section id="home" class="page active"><div class="container center">
+<h1>CyberShield</h1><p>Cybersecurity Protection & Cybercrime Reporting Portal</p>
+<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1000" alt="Cybersecurity">
+<h2>Welcome to CyberShield</h2><p>Your Digital Safety Is Our Priority.</p>
+<button onclick="show('register')">Register via Phone Number →</button>
+</div></section>
+
+<section id="register" class="page"><div class="container">
+<h1>Phone Registration</h1><p>Enter your mobile number to continue.</p>
+<form onsubmit="register(event)">
+<label>Mobile Number</label><input id="mobile" type="tel" maxlength="10" pattern="[0-9]{10}" placeholder="Enter 10 digit number" required>
+<button class="full">Register Now →</button>
+</form></div></section>
+
+<section id="welcome" class="page"><div class="container center">
+<h1>Registration Successful!</h1><div class="card">
+<p class="welcome">YES! WELCOME TO THE WORLD OF RAJ</p>
+<h2>Welcome, Raj!</h2><p>Welcome to the CyberShield security experience.</p>
+</div><button onclick="openCaptcha()">Continue →</button>
+</div></section>
+
+<section id="captcha" class="page"><div class="container">
+<h1>Security Verification</h1><p class="center">Enter the English letters shown below.</p>
+<div class="captcha" id="code">ABCDE</div>
+<button onclick="generate()">Refresh CAPTCHA</button>
+<form onsubmit="verify(event)">
+<label>Enter CAPTCHA Letters</label><input id="answer" maxlength="5" required placeholder="Enter letters">
+<button class="full">Verify & Continue →</button>
+</form><p id="msg"></p>
+</div></section>
+
+<section id="report" class="page"><div class="container">
+<h1>Cybercrime Reporting Form</h1><p>Provide details about the incident.</p>
+<form onsubmit="submitReport(event)">
+<label>Full Name</label><input required placeholder="Enter name">
+<label>Mobile Number</label><input id="reportMobile" type="tel" maxlength="10" pattern="[0-9]{10}" required>
+<label>Type of Cybercrime</label>
+<select required><option value="">Select type</option><option>Online Financial Fraud</option><option>Phishing</option><option>Social Media Hacking</option><option>Identity Theft</option><option>Cyber Bullying</option><option>Fake Profile</option><option>Other</option></select>
+<label>Platform</label><select required><option value="">Select platform</option><option>Instagram</option><option>WhatsApp</option><option>Facebook</option><option>Email</option><option>Website</option><option>Other</option></select>
+<label>Incident Date</label><input type="date" required>
+<label>Describe Incident</label><textarea rows="4" required placeholder="Describe what happened"></textarea>
+<label><input type="checkbox" required style="width:auto"> This is an educational demo, not an official complaint.</label><br><br>
+<button class="full">Submit Report →</button>
+</form></div></section>
+
+<section id="awareness" class="page"><div class="container">
+<h1>Cybersecurity Awareness</h1><p class="center">Think Before You Click. Stay Safe!</p>
+<div class="card"><h3>1. Strong Passwords</h3><p>Use unique and strong passwords.</p></div>
+<div class="card"><h3>2. Two-Factor Authentication</h3><p>Enable extra verification on your accounts.</p></div>
+<div class="card"><h3>3. Avoid Phishing</h3><p>Never open suspicious links.</p></div>
+<div class="card"><h3>4. Protect Your OTP</h3><p>Never share your OTP or PIN.</p></div>
+<div class="card"><h3>5. Update Software</h3><p>Keep your applications updated.</p></div>
+<div class="card"><h3>6. Report Cybercrime</h3><p>Visit the official Indian cybercrime portal.</p><a href="https://cybercrime.gov.in/" target="_blank" style="color:#35e0e0">Visit Official Portal →</a></div>
+<button class="full" onclick="show('thanks')">Continue →</button>
+</div></section>
+
+<section id="thanks" class="page"><div class="container center">
+<h1>Thank You!</h1><div class="card"><h2>✓ Successfully Completed</h2>
+<p>Thank you for visiting CyberShield.</p><p class="welcome">STAY ALERT. STAY SECURE.</p></div>
+<button onclick="restart()">Back to Home</button>
+</div></section>
+
+<footer><p>© 2026 CyberShield | Designed by Raj</p></footer>
+
+<script>
+const raj="7783852598";
+let captcha="";
+function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function register(e){e.preventDefault();let n=document.getElementById('mobile').value;if(n===raj)show('welcome');else{document.getElementById('reportMobile').value=n;show('report')}}
+function generate(){captcha=Array.from({length:5},()=> "ABCDEFGHJKLMNPQRSTUVWXYZ"[Math.floor(Math.random()*24)]).join('');document.getElementById('code').textContent=captcha}
+function openCaptcha(){generate();document.getElementById('answer').value='';document.getElementById('msg').textContent='';show('captcha')}
+function verify(e){e.preventDefault();if(document.getElementById('answer').value.trim().toUpperCase()===captcha)show('awareness');else{document.getElementById('msg').textContent='Incorrect CAPTCHA! Try Again.';generate()}}
+function submitReport(e){e.preventDefault();show('awareness')}
+function restart(){document.querySelectorAll('input,textarea').forEach(x=>{if(x.type==='checkbox')x.checked=false;else x.value=''});show('home')}
+</script>
+</body>
+</html>
